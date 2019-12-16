@@ -1,0 +1,56 @@
+.num1{
+position: absolute;
+z-index: 5;
+margin: 25px;
+left: 48%;
+
+}
+
+.num2{
+    position: absolute;
+   z-index: 4;
+   margin: 17px;
+    left: 48%;
+}
+
+.num3{
+    position: absolute;
+     z-index: 3;
+     margin: 10px;
+     left: 48%;
+
+}
+
+.num4{
+    position: absolute;
+    z-index: 2;
+    margin: 5px;
+    left: 48%;
+
+}
+.num5{
+    position: absolute;
+    z-index: 1;
+    left: 48%;
+
+}
+h1{
+    display: inline;
+    position: relative;
+    top: 99px;
+    left: 30px;
+
+}
+.bg-color{
+    margin-top: 105px;
+    margin-left: 30px;
+}
+
+.mar{
+    margin-bottom: 10px;
+}
+
+.mar-top{
+    margin-top: 10px;
+   
+}

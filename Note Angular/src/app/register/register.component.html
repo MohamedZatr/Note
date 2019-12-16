@@ -1,0 +1,94 @@
+<div class="text-center">
+    <div class="num1"> 
+      <i class="fa fa-sticky-note fa-5x text-warning"> </i>
+    </div>
+    <div class = "num2">
+      <i class="fa fa-sticky-note fa-5x text-info"> </i>
+    </div>
+    <div class="num3">
+      <i class="fa fa-sticky-note fa-5x text-danger"> </i>
+    </div>
+    <div class="num4">
+      <i class="fa fa-sticky-note fa-5x text-white"> </i>
+    </div>
+    <div class="num5">
+      <i class="fa fa-sticky-note fa-5x text-success"> </i>
+    </div>
+    <h1 class="text-warning"> N</h1>
+    <h1 class="text-success">o</h1>
+    <h1 class="text-danger">t</h1>
+    <h1 class="text-primary">e</h1>
+</div>
+<div class="col-md-6 card register-form">
+  <form name = "form" #f ="ngForm" (ngSubmit) ="f.form.valid && register()" >
+    <!-- Name -->
+    <div class="form-group">
+      <label class="mar-top" for="userName">Name</label>
+      <input type="text"
+       class="form-control"
+        placeholder="Your Name"
+        name="userName"
+        #userName = "ngModel"
+        [(ngModel)] = "user.name"
+        required
+        [ngClass] ="{
+          'is-invaild':userName.touched && userName.invaild && f.submitted,
+          'is-invaild':userName.touched && userName.invaild
+
+        }"
+        minlength="3"
+        />
+          <div *ngIf="userName.touched && userName.invalid || f.submitted" class="text-danger">
+          <div *ngIf="userName.errors?.required">This field is required</div> 
+          <div *ngIf="userName.errors?.minlength">This less than minlength Must Be More than tow Character </div>    
+    </div>
+    </div> 
+    <!-- E-mail -->
+      <div class="form-group">
+          <label class="lab" for="name">E-mail</label>
+              <input type="email" 
+              class="form-control"
+              placeholder="Your E-mail"
+              name="email"
+              #email = "ngModel"
+              [(ngModel)] = "user.email"
+              required
+              [ngClass] ="{
+                'is-invaild':email.touched && email.invaild && f.submitted,
+                'is-invaild':email.touched && email.invaild
+      
+              }"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+              />
+                <div *ngIf="email.touched && email.invalid || f.submitted" class="text-danger">
+                <div *ngIf="email.errors?.required">This field is required</div> 
+                <div *ngIf="email.errors?.pattern">This is not valid E-mail Valid email(example@ds.ccc)</div>
+
+          </div>
+          </div>
+       <!-- Password -->
+       <div class="form-group">
+              <label for="name">Password</label>
+              <input type="password"
+              class="form-control"
+              placeholder="Your Password"
+              [(ngModel)] = "user.password" 
+              #password = "ngModel"
+              name="password"
+              required
+              minlength="8"
+              pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"
+              />
+              <div *ngIf="password.touched && password.invalid || f.submitted" class="text-danger">
+                <div *ngIf="password.errors?.required">This field is required</div> 
+                <div *ngIf="password.errors?.minlength">This less than minlength must be more than 8 Character</div> 
+                <div *ngIf="password.errors?.pattern">The password must be have (UpperCase, LowerCase and Number)</div>    
+          </div>
+      </div>
+      <div class="col-md-12 mar-bottom">
+      <button type="submit" class="btn btn-warning">
+        Registration
+      </button>
+      </div>
+  </form>
+</div>

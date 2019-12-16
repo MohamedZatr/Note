@@ -1,0 +1,32 @@
+.note-card{
+    border:solid white 4px ;
+    /*margin: 0px;*/
+    margin-top: 4px;
+    margin-left: 4px;
+}
+.note-card-body{
+    padding: 8px;
+    margin-top: 0px;
+}
+.note-title{
+    width: 80%;
+    font-weight: bolder;
+    color:#222;
+}
+.note-text{
+    width: 100%;
+}
+.trash-pos{
+    position: relative;
+    bottom: 39px;
+    left: 2px;
+}  
+.oninputfocuse:focus{
+    outline: 2px solid white;  
+    padding-left: 5px;
+  }
+  .clock-pos{
+  position: relative;
+  right: 5px;
+  top: 4px;
+}

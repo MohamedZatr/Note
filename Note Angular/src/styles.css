@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;background: black;}
+.input-lable{
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    width: 70%;
+}
+
+.input-lable-lg{
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    font-size: large;
+    font-weight: bolder;
+}
+.btn-notecolor{
+    border-radius: 7px;
+    padding: 8px;
+    margin-bottom: 8px;
+    margin-right: 8px;
+    border: 0px;
+}
+.btn-notecolor:hover{
+padding: 9px;
+border-radius: 10px;
+}

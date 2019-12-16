@@ -1,0 +1,17 @@
+.card{
+    color: #ffffff;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+.btn-info{
+    margin-bottom: 15px;    
+}
+.lab{
+    padding-top: 10px ;    
+}
+.ng-valid{
+    border-color: cornflowerblue;
+}
+.mar-top{
+    margin-top: 10px;
+}

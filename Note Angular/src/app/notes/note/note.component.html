@@ -1,0 +1,52 @@
+ <div class="card note-card"  [ngClass] = "note.noteColor">
+                <div class="card-body note-card-body" >
+                    <div>
+                            <ng-container *ngFor="let color of colors">
+                                    <button #col *ngIf="color.name !== note.noteColor" 
+                                    (click)=colorOfNote(col.value) value="{{color.name}}" class="btn-notecolor"  [ngClass]="color.name" ></button>
+                            </ng-container>
+                        <input 
+                        type="text"
+                        class="input-lable oninputfocuse note-title"
+                        [ngClass] = "note.noteColor"
+                        [ngStyle] = "{
+                            'color':
+                            note.noteColor === 'bg-secondary' 
+                            || 
+                            note.noteColor === 'bg-dark'
+                            ||
+                            note.noteColor === 'bg-primary'
+                            ?'#fff':'#000'}"
+                        value="{{note.title}}"
+                        maxlength="18" 
+                        placeholder="Write You Title Here"
+                        [(ngModel)] = "note.title"  
+                        (change) = "updateNote(note)"
+                          />
+                        <a (click) = "deleteNote(note)" class="pull-right text-danger">
+                            <i title="Delete" class="fa fa-trash-o fa-lg trash-pos text-light"></i>
+                        </a>
+                    </div>
+                        <textarea 
+                        value="{{note.text}}" 
+                        class="input-lable oninputfocuse note-text" 
+                        rows="6"
+                        [ngClass]="note.noteColor"
+                        [ngStyle] = "{
+                            'color':
+                            note.noteColor === 'bg-secondary' 
+                            || 
+                            note.noteColor === 'bg-dark'
+                            ||
+                            note.noteColor === 'bg-primary'
+                            ?'#fff':'#000'}"
+                        [(ngModel)] = "note.text"
+                        (change) = "updateNote(note)"
+                        placeholder="Write Your Note Here"
+                        ></textarea>
+                        <i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;
+                        <strong class="text-light">{{note.data | date:'dd-MM-yyyy'}}</strong>
+                        &nbsp;<strong class="text-light pull-right">{{note.data | date:'HH:mm'}}</strong>
+                        &nbsp;<i class="fa fa-clock-o fa-lg pull-right clock-pos" aria-hidden="true"></i>
+                    </div>
+            </div>

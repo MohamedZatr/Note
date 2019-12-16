@@ -1,0 +1,119 @@
+<app-navigation></app-navigation>
+<div class="container martop">
+    <!--Note Menu-->
+        
+    <div class="row">
+        <div class="col-md-8">
+                <input class="form-control border-input" type="search" placeholder="Search" ngModel [(ngModel)] = "searchWord">
+
+        </div>
+        <div class="col-md-4">
+            <button type="button" class="btn btn-info pull-right" (click)="createNewNotebook()" >
+                <i class="fa fa-book col-blak"></i>&nbsp;New NoteBook</button>
+                <button (click)="addNewNote()" [disabled] = "!lastNotebookClicked" type="button" class="btn btn-warning pull-right">
+                <i class="fa fa-sticky-note"></i>&nbsp;New Note</button>
+        </div>
+    </div>
+<!--Note Content-->
+<div class="row">
+
+    <div class="col-md-3">
+        <br>
+        <!-- Colors Of Notebook -->
+  <div class="col-md-10 div-center">
+        <button #col (click)=colorOfNoteBook(col.value) value="{{color.name}}" [disabled]="!lastNotebookClicked" class="btn-notecolor" *ngFor="let color of colors"  [ngClass]="color.name" ></button>
+  </div>
+       
+  
+    <div class="list-group list-group-flush">
+        
+        <a (click) = "getAllNotes()" class="list-group-item list-group-item-action">
+                <span>&nbsp;&nbsp;</span><i class="fa fa-book"></i>&nbsp;All
+        </a>
+        <a  *ngFor="let notebook of Notebooks;let i = index" class="list-group-item list-group-item-action" (click)="getNoteByNotebook(notebook)">
+                <span class="color-notebook"  [ngClass] = "notebook.colorNotebook">&nbsp;&nbsp;</span>
+                <i class="fa fa-book"></i>&nbsp;<input (change) = "updateNotebook(notebook)" required class="input-lable" [(ngModel)]="notebook.name" value="{{notebook.name}}"> 
+                <a class="pull-right text-danger">
+                    <i class="fa fa-trash-o fa-lg" (click)= "deleteNotebook(notebook)"></i>
+                </a> 
+            </a>
+        <!--Notebook List-->
+       
+    </div>
+    </div>
+    <!--Note Panle-->
+    <div class="col-md-9 marg">
+            <strong class="title-notebook" *ngIf ="lastNotebookClicked == null" >All Notes</strong>
+            <span class="notebook-title" *ngIf ="lastNotebookClicked != null" [ngClass]="lastNotebookClicked.colorNotebook">&nbsp;&nbsp;</span>&nbsp;
+            <strong class="title-notebook" *ngIf ="lastNotebookClicked != null">{{lastNotebookClicked.name}}</strong>
+        <div class="row">
+            <div class="col md 12">
+                <!-- Message If Ther Is No Note-->
+                <p class="bg-warning no-note" *ngIf="this.Notes.length === 0">&nbsp;There Are No Notes To Display For This Notebook&nbsp;<i class="fa fa-frown-o fa-lg text-danger"></i>&nbsp;</p>
+            </div>
+        </div>
+        <div class="row note-row">
+            <!--Note List *ngFor="let note of Notes" --> 
+           <app-note 
+           *ngFor="let note of Notes | filterNotes:searchWord"
+            [myNote] = "note" 
+            [myColors]="colors" 
+            (myUpdate)="updateNote($event)"
+            (myDelete)="deleteNote($event)"
+            (myChangeColor)="colorOfNote($event)"
+
+            ></app-note>
+           <!--
+            <div class="card note-card" *ngFor="let note of Notes" [ngClass] = "note.noteColor">
+                <div class="card-body note-card-body" >
+                    <div>
+                            <ng-container *ngFor="let color of colors">
+                                    <button #col *ngIf="color.name !== note.noteColor" (click)=colorOfNote(col.value,note) value="{{color.name}}" class="btn-notecolor"  [ngClass]="color.name" ></button>
+                            </ng-container>
+                       
+                        <input 
+                        type="text"
+                        class="input-lable oninputfocuse note-title"
+                        [ngClass] = "note.noteColor"
+                        [ngStyle] = "{
+                            'color':
+                            note.noteColor === 'bg-secondary' 
+                            || 
+                            note.noteColor === 'bg-dark'
+                            ||
+                            note.noteColor === 'bg-primary'
+                            ?'#fff':'#000'}"
+                        value="{{note.title}}"
+                        maxlength="18" 
+                        placeholder="Write You Title Here"
+                        [(ngModel)] = "note.title"  
+                        (change) = "updateNote(note)"
+                          />
+                        <a (click) = "deleteNote(note)" class="pull-right text-danger">
+                            <i title="Delete" class="fa fa-trash-o fa-lg trash-pos text-light"></i>
+                        </a>
+                    </div>
+                        <textarea 
+                        value="{{note.text}}" 
+                        class="input-lable oninputfocuse note-text" 
+                        rows="6"
+                        [ngClass]="note.noteColor"
+                        [ngStyle] = "{
+                            'color':
+                            note.noteColor === 'bg-secondary' 
+                            || 
+                            note.noteColor === 'bg-dark'
+                            ||
+                            note.noteColor === 'bg-primary'
+                            ?'#fff':'#000'}"
+                        [(ngModel)] = "note.text"
+                        (change) = "updateNote(note)"
+                        placeholder="Write Your Note Here"
+                        ></textarea>
+                        <strong class="text-info"></strong>
+                </div>
+            </div>-->
+        </div>
+    </div>
+</div>
+</div> 

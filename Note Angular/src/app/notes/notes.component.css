@@ -1,0 +1,88 @@
+.martop{
+    margin-top: 15px;
+}
+.btn-info{
+    margin-left: 12px;    
+}
+.col-blak{
+    color: #000;
+}
+.list-group{
+   border: #000 solid 1px;
+    background-color: #b0b0b0;
+}
+.list-group-item-action{
+    border: #000 solid 1px;    
+}
+
+.fa-trash-o:hover{
+    color: brown;
+    cursor: pointer;
+}
+
+.note-row{
+    margin-bottom: 20px;
+}
+
+.no-note{
+    padding: 10px;
+    margin-top: 20px;
+    display: inline-block;
+    border-radius: 26px;
+    margin-left: 75px;
+    text-align: center;
+    font-weight: bold;
+}
+.note-card{
+    border:solid white 4px ;
+    margin: 0px;
+}
+.note-card-body{
+    padding: 8px;
+    margin-top: 0px;
+}
+.note-title{
+    width: 80%;
+    font-weight: bolder;
+    color:#222;
+}
+.note-text{
+    width: 100%;
+} 
+
+.color-notebook{
+    position: relative;
+    right: 20px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+.notebook-title{
+    padding: 0px 6px;
+    border-radius: 14px;
+}
+.div-center{
+    margin: 0px auto ;
+}
+.note-colos{
+    position: relative;
+    bottom: 19px;
+    right: 18px;
+    /*display: contents;*/
+}
+.oninputfocuse:focus{
+    outline: 2px solid white;  
+    padding-left: 5px;
+  }
+
+
+  .marg{
+    margin-top: 27px;      
+}
+
+.border-input{
+    border: 1px solid black;
+}
+
+.title-notebook{
+    color: #fff;
+}
